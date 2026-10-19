@@ -1,0 +1,21 @@
+{
+  "name": "school1430-practicum",
+  "version": "2.9.2",
+  "private": true,
+  "description": "Тренажёр школы 1430: основной банк 3333 и банк ОГЭ 400, подборки по темам, три уровня и автопроверка практики",
+  "scripts": {
+    "build": "node tools/build-pages.mjs",
+    "test": "node --test tests/core.test.cjs tests/bank.test.cjs tests/packs.test.cjs tests/random.test.cjs tests/rotation.test.cjs tests/code.test.cjs tests/oge.test.cjs tests/oge-zip.test.cjs tests/oge-program.test.cjs tests/oge-auto.test.cjs tests/oge-bank.test.cjs tests/oge-rotation.test.cjs tests/oge-practice-bank.test.cjs tests/content-audit.test.cjs tests/pages.test.cjs tests/oge-levels.test.cjs tests/oge-catalog.test.cjs tests/oge-session.test.cjs tests/oge-practical-levels.test.cjs tests/oge-short-audit.test.cjs tests/oge-practical-audit.test.cjs tests/oge-cache.test.cjs",
+    "test:pages": "node tests/pages-check.cjs",
+    "test:focus": "node tests/focus-check.cjs",
+    "test:oge-builder": "node tests/oge-builder-check.cjs",
+    "test:oge-level-files": "node tests/oge-levels-odf-check.cjs",
+    "test:oge-level-app": "node tests/oge-levels-app-check.cjs",
+    "audit:oge": "node tools/audit-oge.mjs",
+    "package:github": "node tools/package-github.mjs",
+    "test:oge-all-practical": "node tests/oge-all-practical-check.cjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
