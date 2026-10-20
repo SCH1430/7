@@ -1,2 +1,52 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f6f2"><meta name="description" content="1430 · Практикум. Готовься к итоговой работе по информатике: два уровня, конструктор своих вариантов, 3333 задания, черновик и понятные разборы."><title>1430 · Практикум — информатика, 7 класс</title><link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="builder.css"><link rel="stylesheet" href="features.css"><link rel="stylesheet" href="oge.css"><link rel="stylesheet" href="identity.css"><script defer src="core.js"></script><script defer src="task-packs.js"></script><script defer src="bank.js"></script><script defer src="code-view.js"></script><script defer src="features.js"></script><script defer src="app.js"></script></head><body><div id="app"></div><div id="overlay-root"></div><div id="toast" role="status" aria-live="polite"></div></body></html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#3159df">
+  <meta name="description" content="Код 1430 — тренажёр по информатике для 7–11 классов. Задачи, тесты, Python и готовая работа для дневника.">
+  <title>Код 1430 · Информатика</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./assets/python-highlight.css">
+  <link rel="stylesheet" href="./assets/constructor.css">
+  <link rel="stylesheet" href="./assets/content.css">
+  <link rel="stylesheet" href="./assets/display.css">
+  <link rel="stylesheet" href="./assets/focus.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <button class="brand" data-screen="home" aria-label="Код 1430 — главная">Код <span>[1430]</span></button>
+      <div class="school-label">Информатика<br>школы №1430</div>
+      <nav class="main-nav" aria-label="Главная навигация">
+        <button data-screen="home" class="nav-item active"><span class="nav-symbol" aria-hidden="true">▦</span>Практика</button>
+        <button data-screen="constructor" class="nav-item"><span class="nav-symbol" aria-hidden="true">＋</span>Конструктор</button>
+        <button data-screen="history" class="nav-item"><span class="nav-symbol" aria-hidden="true">▤</span>Мои работы<span id="history-count" class="nav-count">0</span></button>
+        <button data-screen="about" class="nav-item"><span class="nav-symbol" aria-hidden="true">?</span>Справка</button>
+      </nav>
+      <div class="sidebar-bottom"><span class="tiny-label">УЧЕБНОЕ ПРОСТРАНСТВО</span><div>Понять.<br>Решить.<br>Проверить.</div><span class="version">7–11 классы · v1.5</span></div>
+    </aside>
+    <div class="app-body">
+      <header class="topbar"><div id="breadcrumb">Практика по информатике</div><div class="topbar-right"><span class="local-badge"><span></span>На вашем устройстве</span><button class="icon-button" data-action="help" aria-label="Справка">?</button></div></header>
+      <main id="main" tabindex="-1"><div class="loading-screen">Загружаем задания…</div></main>
+      <footer class="app-footer"><span>Код [1430]</span><span>Задачи · Тесты · Программирование</span></footer>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="start-dialog" class="modal"><form method="dialog"><button class="modal-close" aria-label="Закрыть">×</button></form><div id="start-dialog-content"></div></dialog>
+  <dialog id="confirm-dialog" class="modal small-modal"><div id="confirm-content"></div><div class="button-row"><button id="confirm-cancel" class="button secondary">Отмена</button><button id="confirm-ok" class="button primary">Подтвердить</button></div></dialog>
+  <dialog id="away-dialog" class="modal small-modal"><span class="eyebrow">РЕЖИМ КОНТРОЛЯ</span><h2>Вы вернулись к работе</h2><p id="away-message"></p><p class="muted">Ответы сохранены. Таймер продолжает идти.</p><button class="button primary" id="away-continue">Продолжить</button></dialog>
+  <dialog id="tools-dialog" class="tools-modal">
+    <div class="tools-header"><div class="tool-tabs" role="group" aria-label="Инструменты"><button data-tool="calculator" aria-pressed="true">Калькулятор</button><button data-tool="python" aria-pressed="false">Python</button></div><button class="icon-button" data-action="close-tools" aria-label="Закрыть инструменты">×</button></div>
+    <section id="calculator-panel"><label class="field-label" for="calc-expression">Выражение</label><input id="calc-expression" class="calc-display" autocomplete="off" spellcheck="false" inputmode="decimal" placeholder="(12 + 8) / 4"><div id="calc-result" class="calc-result" role="status">0</div><div id="calc-keys" class="calc-keys"></div><div class="button-row"><button class="button secondary" data-action="copy-calculator">Скопировать результат</button></div><p class="tiny muted">^ — степень · % — остаток · // — деление с округлением вниз</p></section>
+    <section id="python-panel" hidden><div class="python-topline"><span id="python-status" class="tiny muted">Python загружается при первом запуске</span><span class="tiny muted">Без import</span></div><label class="field-label" for="python-code">Код программы</label><div class="code-editor"><div id="python-lines" aria-hidden="true">1</div><textarea id="python-code" maxlength="30000" spellcheck="false" autocapitalize="off" autocorrect="off" aria-describedby="python-hint">print("Привет, 1430!")</textarea></div><div class="python-io"><label class="field-label">Входные данные<textarea id="python-input" maxlength="50000" class="mono" rows="3" placeholder="Каждый input() читает следующую строку"></textarea></label><div><label class="field-label" for="python-output">Вывод программы</label><pre id="python-output" tabindex="0" role="log" aria-label="Вывод программы">Здесь появится результат.</pre></div></div><div class="button-row"><button id="python-run" class="button primary" data-action="run-python">▶ Запустить</button><button id="python-stop" class="button secondary" data-action="stop-python" disabled>■ Остановить</button><button class="button text-button" data-action="clear-python-output">Очистить вывод</button></div><p id="python-hint" class="tiny muted">До 5 секунд на запуск. Tab — четыре пробела. Ctrl/⌘ + Enter — запуск.</p><p id="python-context" class="tiny"></p></section>
+  </dialog>
+  <dialog id="share-dialog" class="modal share-modal"><button class="modal-close" data-action="close-share" aria-label="Закрыть">×</button><div id="share-dialog-content"></div></dialog>
+  <dialog id="export-dialog" class="export-modal"><div class="export-top"><h2>Готовая работа</h2><button class="icon-button" data-action="close-export" aria-label="Закрыть предпросмотр">×</button></div><div id="export-status" role="status">Подготавливаем страницы…</div><div id="export-controls" hidden><div class="button-row"><button class="button primary" data-action="download-pdf">Скачать PDF</button><button class="button secondary" data-action="download-png">PNG страницы</button><button class="button secondary" data-action="download-all-png">Все PNG архивом</button></div><label class="field-label export-page-label">Страница <select id="export-page"></select></label></div><div id="export-preview"></div></dialog>
+  <noscript><div class="no-script">Для работы тренажёра включите JavaScript в браузере.</div></noscript>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

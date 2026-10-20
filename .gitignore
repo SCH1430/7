@@ -1,14 +1,3 @@
 node_modules/
-tests/*.png
-tests/*.pdf
-tests/*.json
-tests/*.txt
-output/
-*.tar.gz
-*.tgz
 .DS_Store
-
-/tmp/
-.openai/
-Thumbs.db
-*.log
+qa/

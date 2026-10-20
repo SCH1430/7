@@ -1,0 +1,102 @@
+/* Optional enhancement. Without this sheet the original textarea remains readable. */
+.code-editor > .py-highlight-shell {
+  position: relative;
+  display: block;
+  min-width: 0;
+  max-height: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #f5f7fb;
+  text-align: left;
+  color: #1b2536;
+  font: 13px/1.7 ui-monospace, monospace;
+}
+.py-highlight-shell .py-highlight-layer,
+.code-editor .py-highlight-shell .py-highlight-input {
+  box-sizing: border-box;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 15px 12px;
+  font: 13px/1.7 ui-monospace, monospace;
+  font-variant-ligatures: none;
+  font-kerning: none;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-indent: 0;
+  text-align: left;
+  text-transform: none;
+  white-space: pre;
+  overflow-wrap: normal;
+  word-break: normal;
+  tab-size: 4;
+}
+.py-highlight-shell .py-highlight-layer {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  overflow: hidden;
+  pointer-events: none;
+  background: transparent;
+  color: #1b2536;
+}
+.py-highlight-layer code,
+.py-highlight-layer span {
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+.code-editor .py-highlight-shell .py-highlight-input {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  min-height: 230px;
+  max-height: 370px;
+  overflow: auto;
+  resize: vertical;
+  background: transparent;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  caret-color: #1b2536;
+}
+.py-highlight-input::selection {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background: #3159df35;
+}
+.py-highlight-shell:focus-within { box-shadow: inset 0 0 0 2px #a4b8ff; }
+.py-token-keyword { color: #7042a0; }
+.py-token-builtin { color: #2059ad; }
+.py-token-string { color: #246d43; }
+.py-token-number { color: #a34b15; }
+.py-token-comment { color: #5f6c82; }
+.py-token-operator { color: #9e3954; }
+.py-highlight-shell > .py-error-line {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  background: #fbe4e7;
+  border-left: 3px solid #b63745;
+}
+@media (max-width: 480px) {
+  .code-editor .py-highlight-shell .py-highlight-input { min-height: 210px; }
+}
+@media (pointer: coarse) {
+  .py-highlight-shell .py-highlight-layer,
+  .code-editor .py-highlight-shell .py-highlight-input { font-size: 16px; line-height: 1.55; }
+}
+@media (forced-colors: active) {
+  .py-highlight-shell .py-highlight-layer { display: none; }
+  .code-editor .py-highlight-shell .py-highlight-input { color: CanvasText; -webkit-text-fill-color: CanvasText; caret-color: CanvasText; }
+  .py-highlight-input::selection { color: HighlightText; -webkit-text-fill-color: HighlightText; background: Highlight; }
+  .py-highlight-shell > .py-error-line { border-left-color: Mark; }
+}
